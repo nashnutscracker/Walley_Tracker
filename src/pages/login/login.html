@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title class="headtitle">Walley-Tracker</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-list>
+
+        <ion-item>
+            <ion-label fixed>Username</ion-label>
+            <ion-input type="text" #name></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label fixed>Password</ion-label>
+            <ion-input type="password" #pwd></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <div padding>
+        <button ion-button color="primary" (click)="validate(name.value,pwd.value)" block>Login</button>
+
+
+    </div>
+
+
+</ion-content>
