@@ -7,6 +7,7 @@ import { LocalStorageProvider } from "../providers/local-storage/local-storage";
 import { LoginPage } from '../pages/login/login';
 import { DashBoardPage } from '../pages/dashboard/dashboard';
 import { Storage } from '@ionic/storage';
+import { CreatepinPage } from '../pages/createpin/createpin';
 
 @Component({
   templateUrl: 'app.html'
@@ -35,12 +36,12 @@ export class MyApp {
 
     this.localStorage.getWalleyTrackerFlag()
       .then(res => {
+
         if (res == null) {
-          this.nav.push(LoginPage);
+          this.nav.push(CreatepinPage);
         }
         else
           this.nav.push(DashBoardPage);
-        console.log("wrror")
       })
   }
 }

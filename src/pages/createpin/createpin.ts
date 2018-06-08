@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
+import { LocalStorageProvider } from "../../providers/local-storage/local-storage";
+import { DashBoardPage } from '../dashboard/dashboard';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the CreatepinPage page.
@@ -15,7 +18,19 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CreatepinPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private localStorage: LocalStorageProvider, private navCtrl: NavController) {
+  }
+
+  create(pin, confirmpin) {
+    if (pin == confirmpin) {
+      this.localStorage.setWalleyTrackerPin(pin);
+
+      this.navCtrl.push(LoginPage);
+    }
+    else {
+      console.log("bye");
+    }
+
   }
 
   ionViewDidLoad() {

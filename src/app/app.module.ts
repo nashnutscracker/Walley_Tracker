@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, NavController } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -15,6 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
 import { LocalStorageProvider } from '../providers/local-storage/local-storage';
+import { CreatepinPage } from '../pages/createpin/createpin';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     TabsPage,
     LoginPage,
     SpentPage,
-    DepositPage
+    DepositPage,
+    CreatepinPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { LocalStorageProvider } from '../providers/local-storage/local-storage';
     TabsPage,
     LoginPage,
     SpentPage,
-    DepositPage
+    DepositPage,
+    CreatepinPage
   ],
   providers: [
     StatusBar,

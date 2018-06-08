@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TabsPage } from '../tabs/tabs';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { LocalStorageProvider } from '../../providers/local-storage/local-storage';
 
 
 @Component({
@@ -11,19 +12,22 @@ export class LoginPage {
 
     sucessLogin;
     alertCtrl;
+    WTPin;
 
 
     constructor(public navCtrl: NavController, public navPrams: NavParams,
-        public alerCtrl: AlertController) {
+        public alerCtrl: AlertController, public localStorage: LocalStorageProvider) {
         this.sucessLogin = TabsPage
+        localStorage.getWalleyTrackerPin().then(res => {
+            this.WTPin = res;
+        })
 
     }
 
 
 
     validate(pin) {
-
-        if (pin == 1234) {
+        if (pin == this.WTPin) {
 
             this.navCtrl.push(TabsPage);
         }

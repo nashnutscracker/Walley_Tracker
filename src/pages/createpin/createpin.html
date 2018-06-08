@@ -1,18 +1,30 @@
-<!--
-  Generated template for the CreatepinPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>createpin</ion-title>
+    <ion-title class="headtitle">Walley-Tracker</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
 
-<ion-content padding>
+  <ion-list>
+
+    <ion-item>
+      <ion-label fixed>Enter PIN</ion-label>
+      <ion-input type="number" #pin aria-required="true"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label fixed>Confirm PIN</ion-label>
+      <ion-input type="number" #confirmpin aria-required="true"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <div padding>
+    <button ion-button color="primary" (click)="create(pin.value,confirmpin.value)" block>Login</button>
+
+
+  </div>
+
 
 </ion-content>
