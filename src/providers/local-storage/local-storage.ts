@@ -7,6 +7,7 @@ export class LocalStorageProvider {
   constructor(private storage: Storage) {
     // this.storage.remove('WTFlag');
     // this.storage.remove('WTPin');
+    // this.storage.remove('data');
   }
 
   getWalleyTrackerFlag() {
@@ -19,5 +20,20 @@ export class LocalStorageProvider {
   }
   getWalleyTrackerPin() {
     return this.storage.get('WTPin');
+  }
+
+  setWalleyMoneyData(data) {
+    this.storage.set("data", data);
+  }
+
+  getWalleyMoneyData() {
+    this.storage.get("data").then(res => {
+      if (res == null) {
+        return res;
+      }
+      else {
+        return res;
+      }
+    });
   }
 }

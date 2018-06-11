@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Const } from "../../../common/const";
-import { DashBoardPage } from '../../dashboard/dashboard';
+// import { Const } from "../../../common/const";
+// import { DashBoardPage } from '../../dashboard/dashboard';
+import { Storage } from '@ionic/storage';
+import { LocalStorageProvider } from '../../../providers/local-storage/local-storage';
 
 /**
  * Generated class for the SpentPage page.
@@ -14,19 +16,46 @@ import { DashBoardPage } from '../../dashboard/dashboard';
 @Component({
   selector: 'page-spent',
   templateUrl: 'spent.html',
+  providers: [LocalStorageProvider]
 })
 export class SpentPage {
-  public wallet_money = Const.money;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  finalData;
+  // public wallet_money = Const.money;
+  dataToStore;
+  public now = new Date().toISOString();
+  datafromstore;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public localStorage: LocalStorageProvider) {
+    console.log(this.now);
+    this.dataToStore = {
+      date: '',
+      reason: '',
+      money: ''
+
+    }
+
   }
 
   spend(date, reason, money) {
-    this.wallet_money = this.wallet_money - money;
-    this.navCtrl.push(DashBoardPage);
-  }
+    this.dataToStore.date = date;
+    this.dataToStore.reason = reason;
+    this.dataToStore.money = money;
+    this.datafromstore = this.localStorage.getWalleyMoneyData();
+    console.log(this.datafromstore);
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SpentPage');
-  }
 
+    if (this.datafromstore == null) {
+      console.log("NULL and now setting");
+      this.localStorage.setWalleyMoneyData(this.dataToStore);
+
+    }
+    else {
+      console.log("!NULL")
+
+      this.dataToStore = this.localStorage.getWalleyMoneyData();
+      this.datafromstore.push(this.dataToStore);
+      //append data here to datafromStore
+    }
+
+
+  }
 }
