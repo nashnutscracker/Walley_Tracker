@@ -4,10 +4,10 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class LocalStorageProvider {
 
+  dataFromStore: any;
   constructor(private storage: Storage) {
-    // this.storage.remove('WTFlag');
-    // this.storage.remove('WTPin');
-    // this.storage.remove('data');
+    console.log("CAlled")
+    this.dataFromStore = this.getWalleyMoneyData();
   }
 
   getWalleyTrackerFlag() {
@@ -20,20 +20,50 @@ export class LocalStorageProvider {
   }
   getWalleyTrackerPin() {
     return this.storage.get('WTPin');
+
   }
 
-  setWalleyMoneyData(data) {
-    this.storage.set("data", data);
+  setWalleyMoneyData(data) {//store data in a single object or store money and reason in a date array, or store every data in csv format
+    this.storage.get("data").then(res => {
+      if (res == null) {
+        this.storage.set('data', data);
+      }
+      else {
+        res.push(data);
+        console.log(res);
+        this.storage.set('data', res);
+      }
+    });
   }
 
   getWalleyMoneyData() {
     this.storage.get("data").then(res => {
       if (res == null) {
-        return res;
+        console.log("NULL");
+        console.log(JSON.stringify(res));
+        return JSON.stringify(res);
+
+
       }
       else {
-        return res;
+        console.log("!NULL");
+        console.log(JSON.stringify(res));
+        return JSON.stringify(res);
       }
     });
+  }
+
+  reset() {
+    this.storage.remove('data').then(res => {
+      console.log("DONE with object")
+    });
+
+    this.storage.remove('WTFlag').then(res => {
+      console.log("DONE with Flag")
+    });
+    this.storage.remove('WTPin').then(res => {
+      console.log("DONE with PIN")
+    });
+
   }
 }

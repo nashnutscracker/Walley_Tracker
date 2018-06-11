@@ -25,7 +25,6 @@ export class SpentPage {
   public now = new Date().toISOString();
   datafromstore;
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public localStorage: LocalStorageProvider) {
-    console.log(this.now);
     this.dataToStore = {
       date: '',
       reason: '',
@@ -34,27 +33,33 @@ export class SpentPage {
     }
 
   }
+  reset() {
+    this.localStorage.reset();
+  }
+  get() {
+    this.localStorage.getWalleyMoneyData();
+  }
 
   spend(date, reason, money) {
     this.dataToStore.date = date;
     this.dataToStore.reason = reason;
     this.dataToStore.money = money;
-    this.datafromstore = this.localStorage.getWalleyMoneyData();
-    console.log(this.datafromstore);
+    // this.datafromstore = this.localStorage.getWalleyMoneyData();
+    // console.log(this.datafromstore);
 
 
-    if (this.datafromstore == null) {
-      console.log("NULL and now setting");
-      this.localStorage.setWalleyMoneyData(this.dataToStore);
+    // if (this.datafromstore == null) {
+    // console.log("NULL and now setting");
+    this.localStorage.setWalleyMoneyData(this.dataToStore);
 
-    }
-    else {
-      console.log("!NULL")
+    // }
+    // else {
+    // console.log("!NULL")
 
-      this.dataToStore = this.localStorage.getWalleyMoneyData();
-      this.datafromstore.push(this.dataToStore);
-      //append data here to datafromStore
-    }
+    // this.dataToStore = this.localStorage.getWalleyMoneyData();
+    // this.datafromstore.push(this.dataToStore);
+    //append data here to datafromStore
+    // }
 
 
   }
