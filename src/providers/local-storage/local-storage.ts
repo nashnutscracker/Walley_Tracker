@@ -7,7 +7,7 @@ export class LocalStorageProvider {
   dataFromStore: any;
   constructor(private storage: Storage) {
     console.log("CAlled")
-    this.dataFromStore = this.getWalleyMoneyData();
+    // this.dataFromStore = this.getWalleyMoneyData();
   }
 
   getWalleyTrackerFlag() {
@@ -29,9 +29,9 @@ export class LocalStorageProvider {
         this.storage.set('data', data);
       }
       else {
-        res.push(data);
-        console.log(res);
-        this.storage.set('data', res);
+
+        console.log("This is !NULL RES" + res);
+
       }
     });
   }
@@ -40,14 +40,14 @@ export class LocalStorageProvider {
     this.storage.get("data").then(res => {
       if (res == null) {
         console.log("NULL");
-        console.log(JSON.stringify(res));
+        // console.log(JSON.stringify(res));
         return JSON.stringify(res);
 
 
       }
       else {
         console.log("!NULL");
-        console.log(JSON.stringify(res));
+        // console.log(JSON.stringify(res));
         return JSON.stringify(res);
       }
     });
@@ -60,9 +60,6 @@ export class LocalStorageProvider {
 
     this.storage.remove('WTFlag').then(res => {
       console.log("DONE with Flag")
-    });
-    this.storage.remove('WTPin').then(res => {
-      console.log("DONE with PIN")
     });
 
   }

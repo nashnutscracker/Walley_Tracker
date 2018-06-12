@@ -25,12 +25,11 @@
   </ion-item>
 
   <ion-item>
-    <ion-input type="text" placeholder="Money" #money></ion-input>
+    <ion-input type="text" placeholder="Amount" #amount></ion-input>
   </ion-item>
 
 
-  <button ion-button color="danger" (click)="spend(date.value,reason.value,money.value)" block>Spend</button>
-  <button ion-button color="danger" (click)="reset()" block>RESET</button>
+  <button ion-button color="danger" (click)="spend(date.value,reason.value,amount.value)" block>Spend</button>
   <button ion-button color="danger" (click)="get()" block>GET</button>
 
 

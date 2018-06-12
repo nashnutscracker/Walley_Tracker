@@ -1,7 +1,18 @@
 page-home {
     #test{
+        color: white;
+        background-color: red;
+    }
+    #wallet{
         color: green;
-        background-color: yellow;
+        text-align: center
+    }
+
+    #spent{
+        color: red;
+    }
+    #deposit{
+        color: green;
     }
 
 }

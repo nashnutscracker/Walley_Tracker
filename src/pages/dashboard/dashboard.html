@@ -1,11 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>DashBoard</ion-title>
+
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h1>Money in Wallet: {{wallet_money}}</h1>
+
+
+
+
+  <h1 id="wallet"> Money in Wallet {{items.amountInWallet|currency:'INR'}}</h1>
+  <ion-grid *ngFor="let item of items.transactions">
+    <ion-row>
+      <ion-col>
+        {{item.sr}}
+      </ion-col>
+      <ion-col>
+        {{item.date}}
+      </ion-col>
+      <ion-col>
+        {{item.reason}}
+      </ion-col>
+      <ion-col *ngIf="item.mode=='deposit'" id={{item.mode}}>
+        +{{item.amount|currency:'INR'}}
+      </ion-col>
+      <ion-col *ngIf="item.mode=='spent'" id={{item.mode}}>
+        -{{item.amount|currency:'INR'}}
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
   <button ion-button (click)="addtowalletpage()" full>Add to Wallet</button>
   <button ion-button (click)="spentpage()" id="test" full>Spent</button>
+
 </ion-content>

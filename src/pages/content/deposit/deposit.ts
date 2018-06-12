@@ -16,15 +16,28 @@ import { Const } from '../.././../common/const';
   templateUrl: 'deposit.html',
 })
 export class DepositPage {
+  dataToStore: { date: string; mode: string; reason: string; amount: string; };
   public wallet_money = Const.money;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.dataToStore = {
+      date: '',
+      mode: 'deposit',
+      reason: '',
+      amount: ''
+
+    }
+
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DepositPage');
   }
-  addtowallet(date, reason, money) {
-    this.navCtrl.push(DashBoardPage);
+  addtowallet(date, reason, amount) {
+    this.dataToStore.date = date;
+    this.dataToStore.amount = amount;
+    this.dataToStore.reason = reason;
+
+    console.log(this.dataToStore);
   }
 
 }

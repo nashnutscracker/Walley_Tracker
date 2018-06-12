@@ -8,6 +8,7 @@ import { LoginPage } from '../pages/login/login';
 import { DashBoardPage } from '../pages/dashboard/dashboard';
 import { Storage } from '@ionic/storage';
 import { CreatepinPage } from '../pages/createpin/createpin';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
   templateUrl: 'app.html'
@@ -41,7 +42,7 @@ export class MyApp {
           this.nav.push(CreatepinPage);
         }
         else
-          this.nav.push(DashBoardPage);
+          this.nav.push(TabsPage);
       })
   }
 }

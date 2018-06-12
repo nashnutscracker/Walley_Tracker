@@ -19,16 +19,18 @@ import { LocalStorageProvider } from '../../../providers/local-storage/local-sto
   providers: [LocalStorageProvider]
 })
 export class SpentPage {
+  dataToStore: { date: string; mode: string; reason: string; amount: string; };
   finalData;
   // public wallet_money = Const.money;
-  dataToStore;
+
   public now = new Date().toISOString();
   datafromstore;
   constructor(public navCtrl: NavController, public navParams: NavParams, private storage: Storage, public localStorage: LocalStorageProvider) {
     this.dataToStore = {
       date: '',
+      mode: 'spent',
       reason: '',
-      money: ''
+      amount: ''
 
     }
 
@@ -40,10 +42,11 @@ export class SpentPage {
     this.localStorage.getWalleyMoneyData();
   }
 
-  spend(date, reason, money) {
+  spend(date, reason, amount) {
     this.dataToStore.date = date;
     this.dataToStore.reason = reason;
-    this.dataToStore.money = money;
+    this.dataToStore.amount = amount;
+    this.dataToStore.mode = "spent";
     // this.datafromstore = this.localStorage.getWalleyMoneyData();
     // console.log(this.datafromstore);
 
